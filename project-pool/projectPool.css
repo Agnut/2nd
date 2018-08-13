@@ -1,0 +1,26 @@
+.calculator {
+  display: grid;
+  grid-template-rows: 35px 35px 35px 35px 35px;
+  grid-template-columns: 35px 35px 35px 35px;
+}
+/*Grid-based calculator*/
+.screen {
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+/*Making input field start at first column line and end on fifth, it means, taking up whole 1st row*/
+input[type="button"] {
+  width: 35px;
+  height: 35px;
+}
+/*Selecting buttons to make them same size*/
+input[type="text"] {
+  width: 140px;
+  height: 35px;
+}
+/*Selecting input field to make it same size as button row*/
+button {
+  width: 35px;
+  height: 35px;
+}
+/*Sellecting buttons that are not input type ="button" to make also same size as others*/
