@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<head>
+	<html lang="en">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animated Kirby</title>
+</head>
+<!-- Body should contain one character which animates when one of 10 buttons is pressed. I chose Kirby because it reminds me of childhood. :) -->
+<body>
+	<style>
+	/* Setting fixed borders, alligning elements in center, changing the font*/
+	html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #66023c;
+    font-family: "Courier New", monospace;
+    color: #ff7373;
+    text-align: center;
+    position: fixed;
+}
+    </style>
+<div class="grid-container">
+	<style>
+	/* Making grid layout of page */
+	.grid-container {
+	display: grid;
+	grid-template-areas: 'topGrid' 'midGrid' 'botGrid' 'lowGrid';
+	grid-template-columns: 100%;
+	grid-template-rows: 20% 60% 10% 10%;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+    }
+    .topGrid {
+	grid-area: topGrid;
+    }
+    .midGrid {
+	grid-area: midGrid;
+    }
+    .botGrid {
+	grid-area: botGrid;
+    }
+    .lowGrid { 
+	grid-area: lowGrid;
+    }
+    </style>
+<div class="topGrid">
+<h1>Animated Kirby</h1>
+</div>
+<div class="midGrid">
+	<img align="center" src="kirby.png" id="kirby" alt="Kirby">
+	<style>
+	/* Fixing character's size and positioning it relative so could be able to animate */
+	#kirby {
+	position: relative;
+	width: 20%;
+	}
+	/* 1. Move animation*/
+@keyframes move {
+	0% {
+		left: 0%;
+	}
+	49.99999% {
+		left: 65%;
+	}
+	50%{ 
+		left: -65%;
+	}
+	100%{
+		left: 0%;
+	}
+}
+/* 2. Move to 30 animation*/
+@keyframes moveTo30 {
+	0% { 
+	left: -65%;
+	}
+	100% {
+    left: -32.5%; ;
+	}
+}
+/*3. Move from 30 animation*/
+@keyframes moveFrom30 {
+	0% { 
+	left: -32.5%;
+	}
+	100% {
+    left: 65%;
+	}
+}
+/* 4. One jump animation*/
+@keyframes oneJump {
+	0% { 
+	bottom: 0%;
+	}
+	50% {
+		bottom: 30%;
+	}
+	100% {
+    bottom: 0%; 
+	}
+}
+/* 5. Jumping animation*/
+@keyframes jumping {
+	0% { 
+	bottom: 0%;
+	}
+	100% {
+		bottom: 30%;
+	}
+}
+/* 6. Fade animation*/ 
+@keyframes fade {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+/* 7. Glow animation */
+@keyframes glow {
+	0% {
+		filter: drop-shadow(10px -30px 20px #ff63b1);
+	}
+	50% {
+        filter: drop-shadow(0px 30px 20px #44d9e6);
+	}
+
+	100% {
+        filter: drop-shadow(-10px -30px 20px #ffcf40);
+    }
+}
+/* 8. Shake animation */
+@keyframes shake {
+	0% { 
+	transform: translate(5px, 5px) rotate(0deg);
+	}
+    20% {
+    transform: translate(-3px, -2px) rotate(-6deg);
+    }
+    40% {
+    transform: translate(-9px, -5px) rotate(6deg);
+    }
+    80% { 
+    transform: translate(1px, 3px) rotate(0deg); 
+    }
+    100% {
+    transform: translate(10px, 3px) rotate(1deg);
+    }
+}
+/* 9. Mirror animation */
+@keyframes mirror {
+	0% {
+		left: 0%;
+	}
+	50%{
+		left: -10%;
+    }
+    75% {
+    	-webkit-box-reflect: right;
+	}
+	100%{
+		left: -10%;
+		-webkit-box-reflect: right;
+	}
+}
+/* 10.Hitter animation */
+@keyframes fallDown {
+25% {
+   transform: rotate(90deg); 
+ }
+ 100% {
+ 	transform: rotate(90deg);
+ }
+ }	
+	</style>
+</div>
+<div class="botGrid">
+<h3>Note: Animations are stopped by pressing the same button that started the animation.</h3>
+</div>
+<div class="lowGrid">
+<button id="button1">Move</button>
+<button id="button2">Move to 30</button>
+<button id="button3">Move from 30</button>
+<button id="button4">Jump once</button>
+<button id="button5">Continuous jumping</button>
+<button id="button6">Fade</button>
+<button id="button7">Glow</button>
+<button id="button8">Shake</button>
+<button id="button9">Mirror</button>
+<button id="button10">Fall down</button>
+</div>
+</div>
+<script>
+	// Declaring variables and assigning value to it:
+var kirby = document.querySelector("#kirby");
+var button1 = document.querySelector("#button1");
+var button2 = document.querySelector("#button2");
+var button3 = document.querySelector("#button3");
+var button4 = document.querySelector("#button4");
+var button5 = document.querySelector("#button5");
+var button6 = document.querySelector("#button6");
+var button7 = document.querySelector("#button7");
+var button8 = document.querySelector("#button8");
+var button9 = document.querySelector("#button9");
+var button10 = document.querySelector("#button10");
+var playing = false; //helps toggle on/off of the buttons.
+var playing1 = false;
+// Animation assignments to buttons
+
+button1.addEventListener ("click", function (){
+    if ( !playing ) { // If not playing
+        kirby.style.animation = "move 5s linear infinite";
+        // `this` refers to `button1`
+        // `innerText` refers to text content in `button1`
+        this.innerText = 'Stop'; // `this refers to `button1`
+        playing = true;
+    } else {
+        kirby.style.animation = ""; // clear the animation property
+        // `this` refers to `button1`
+        // `innerText` refers to text content in `button1`
+        this.innerText = 'Move';
+        playing=false;
+    }
+});
+
+button2.addEventListener ("click", function (){
+    if ( !playing ) {
+        kirby.style.animation = "moveTo30 3s ease-out 1 forwards";
+        this.innerText = 'Stop';
+        playing = true;
+    } else {
+        kirby.style.animation = "";
+        this.innerText = 'Move to 30';
+        playing = false;
+    }
+});
+
+button3.addEventListener ("click", function (){
+    if ( !playing ) {
+        kirby.style.animation = "moveFrom30 3s ease-in 1 forwards";
+        this.innerText = 'Stop';
+        playing = true;
+    } else {
+        kirby.style.animation = "";
+        this.innerText = 'Move from 30';
+        playing = false;
+    }
+});
+
+button4.addEventListener ("click", function (){
+    if ( !playing ) {
+        kirby.style.animation = "oneJump 2s ease-in-out 1";
+        this.innerText = 'Stop';
+        playing = true;
+    } else {
+        kirby.style.animation = "";
+        this.innerText = 'Jump once';
+        playing = false;
+    }
+});
+
+button5.addEventListener ("click", function (){
+    if ( !playing ) {
+        kirby.style.animation = "jumping 1s ease-out infinite alternate";
+        this.innerText = 'Stop';
+        playing = true;
+    } else {
+        kirby.style.animation = "";
+        this.innerText = 'Continuous jumping';
+        playing = false;
+    }
+});
+
+button6.addEventListener ("click", function (){
+    if ( !playing ) {
+        kirby.style.animation = "fade 2s ease-in-out infinite alternate";
+        this.innerText = 'Stop';
+        playing = true;
+    } else {
+        kirby.style.animation = "";
+        this.innerText = 'Fade';
+        playing = false;
+    }
+});
+
+button7.addEventListener ("click", function (){
+    if ( !playing ) {
+        kirby.style.animation = "glow 6s linear infinite alternate";
+        this.innerText = 'Stop';
+        playing = true;
+    } else {
+        kirby.style.animation = "";
+        this.innerText = 'Glow';
+        playing = false;
+    }
+});
+
+button8.addEventListener ("click", function (){
+    if ( !playing ) {
+        kirby.style.animation = "shake 0.5s linear 3 forwards";
+        this.innerText = 'Stop';
+        playing = true;
+    } else {
+        kirby.style.animation = "";
+        this.innerText = 'Shake';
+        playing = false;
+    }
+});
+
+button9.addEventListener ("click", function (){
+    if ( !playing ) {
+        kirby.style.animation = "mirror 4s ease-in 1 forwards";
+        this.innerText = 'Stop';
+        playing = true;
+    } else {
+        kirby.style.animation = "";
+        this.innerText = 'Mirror';
+        playing = false;
+    }
+});
+
+button10.addEventListener ("click", function (){
+    if ( !playing ) {
+        kirby.style.animation = "fallDown 3s linear 1 forwards";
+        this.innerText = 'Stop';
+        playing = true;
+    } else {
+        kirby.style.animation = "";
+        this.innerText = 'Fall down';
+        playing = false;
+    }
+});
+</script>
+</body>
+</html>
