@@ -1,0 +1,443 @@
+html,
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: black
+}
+
+/*FRAME 1 */
+
+#frame1 {
+    background: url(IMAGES/bgTITLE.png) no-repeat center center fixed;
+    height: 700px;
+    width: auto;
+    background-size: cover;
+    position: relative;
+}
+
+#enter {
+    width: 500px;
+    height: 130px;
+    font-family: "Courier New", serif;
+    border: 2px;
+    text-align: center;
+    padding: 15px 32px;
+    font-size: 40px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transform: translate(400px, 500px)
+}
+
+#enter.fade {
+    animation: fade 4s linear infinite;
+
+}
+
+
+@keyframes fade {
+    33% {
+        opacity: .3;
+    }
+    66% {
+
+        opacity: .5;
+    }
+    99% {
+        opacity: 1;
+    }
+}
+
+/*FRAME 2 */
+
+#frame2 {
+    background: url(IMAGES/scene2A.png) no-repeat center center fixed;
+    background-size: cover;
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#neo {
+    width: 256px;
+    height: 600px;
+    background-image: url(IMAGES/neoSC1copy.png);
+    transform: translate(1px, 50px);
+    opacity: 1;
+}
+
+
+#neo.walk {
+    animation: Neo 1s steps(10) infinite;
+}
+
+@keyframes Neo {
+    100% {
+        background-position: -2560px 0px;
+    }
+}
+
+#wrapper.movetoD {
+    animation: movetoD 3s linear forwards;
+}
+
+
+@keyframes movetoD {
+    to {
+        transform: translate(450px, -10px);
+    }
+}
+
+/*TRINITY*/
+
+* {
+    box-sizing: border-box;
+}
+
+#trin {
+    width: 166px;
+    height: 590px;
+    background-image: url(IMAGES/trinityS1.png);
+    transform: translate(975px, -527px) scale(0.84);
+}
+
+.trin {
+    animation: trin .7s steps(2) infinite;
+}
+
+@keyframes trin {
+    100% {
+        background-position: -508px 0px;
+    }
+}
+
+/*FRAME 3 */
+
+#frame3 {
+    background: url(IMAGES/scene3.png) no-repeat center center fixed;
+    height: 700px;
+    width: auto;
+    background-size: cover;
+    display: none;
+}
+
+#trin3 {
+    background-image: url(IMAGES/trinity3.png);
+    width: 210px;
+    height: 580px;
+    transform: translate(210px, 10px)scale(0.84);
+}
+
+
+.fade {
+    animation-name: fade;
+    animation-delay: 1s;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    opacity:0;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+#neo3 {
+    width: 256px;
+    height: 600px;
+    background-image: url(IMAGES/neoSC1copy.png);
+    transform: translate(1px, -575px);
+}
+
+#neo3.walk {
+    animation: Neo 1s steps(10) infinite;
+}
+
+@keyframes Neo3 {
+    100% {
+        background-position: -2560px 0px;
+    }
+}
+
+#wrapper3.movetoD {
+    animation: movetoD 3s linear forwards;
+}
+
+
+@keyframes movetoD {
+    to {
+        transform: translate(450px, -10px);
+    }
+}
+
+#morpheus {
+    width: 300px;
+    height: 595px;
+    position: absolute;
+    background-image: url(IMAGES/morph3.png);
+    transform: translate(990px, -1200px) scale(.8);
+}
+
+#morpheus.scaleM {
+    animation: scaleM 3s linear alternate infinite;
+}
+
+@keyframes scaleM {
+    0% {
+        transform: translate(990px, -1200px) scale(.6);
+    }
+
+    100% {
+        transform: translate(990px, -1200px) scale(.8);
+    }
+}
+
+/*FRAME 4 */
+
+#frame4 {
+    background: url(IMAGES/scene4.png) no-repeat center center fixed;
+    height: 585px;
+    width: auto;
+    position: relative;
+    background-size: cover;
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#morpheus4 {
+    background-image: url(IMAGES/morph4.png);
+    width: 1000px;
+    height: 1000px;
+    transform: translate(50px, -150px)scale(.5);
+}
+
+
+#morpheus4 {
+    cursor: pointer;
+}
+
+
+#morpheus4.turn {
+    animation: morpheus4 2s steps(5) alternate forwards;
+}
+
+@keyframes morpheus4 {
+    100% {
+        background-position: -5000px;
+    }
+}
+
+/*FRAME 5 */
+
+#frame5 {
+    background: url(IMAGES/scene5.png) no-repeat center center fixed;
+    height: 1000px;
+    width: 2000px;
+    position: relative;
+    background-size: cover;
+    display: none;
+}
+
+#scene5 {
+    background-image: url(IMAGES/S5.png);
+    width: 950px;
+    height: 430px;
+    display: none;
+    transform: translate(120px, 180px) scale(1.2);
+    position: absolute;
+}
+
+#scene5:hover {
+    opacity: .7;
+}
+
+
+
+#scene5.sit {
+    animation: scene5 2s steps(5) infinite;
+}
+
+
+@keyframes scene5 {
+    100% {
+        background-position: -4750px 0px;
+    }
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+#fire {
+    width: 450px;
+    height: 400px;
+    background-image: url(IMAGES/fireS5.png);
+    transform: translate(260px, 165px);
+}
+
+#fire.flames {
+    animation: fire 1s steps(3) forwards infinite;
+}
+
+@keyframes fire {
+    100% {
+        background-position: -2400px 0px;
+    }
+}
+
+.fireMove {
+    animation: fireMove 1s forwards infinite;
+}
+
+@keyframes fireMove {
+    0% {
+        transform: translate(265px);
+    }
+    100% {
+        transform: translate(273px);
+    }
+}
+
+#fire:hover {
+    opacity: .5;
+}
+
+/* FRAME 6 */
+
+#frame6 {
+    background: url(IMAGES/frame6.png) no-repeat center center fixed;
+    height: 1920px;
+    width: 2000px;
+    position: relative;
+    background-size: cover;
+    display: none;
+}
+
+
+#scene6A {
+    background-image: url(IMAGES/blue-pill.png);
+    width: 900px;
+    height: 500px;
+    position: absolute;
+    transform: translate(-120px, -40px)scale(.7);
+    display: none;
+}
+
+#scene6B {
+    background-image: url(IMAGES/red-pill.png);
+    width: 700px;
+    height: 530px;
+    position: absolute;
+    transform: translate(500px, -40px)scale(.7);
+    display: none;
+}
+
+
+
+#scene6A.fade {
+    animation: fade 4s linear infinite;
+}
+
+#scene6B.fade {
+    animation: fade 4s linear infinite;
+}
+
+@keyframes fade {
+    33% {
+        opacity: .3;
+    }
+    66% {
+
+        opacity: .5;
+    }
+    99% {
+        opacity: 1;
+    }
+}
+
+
+/* FRAME 7 */
+
+#frame7 {
+    background: url(IMAGES/scene_7.png) no-repeat center center fixed;
+    height: 1000px;
+    width: 2000px;
+    position: relative;
+    background-size: cover;
+    display: none;
+}
+
+#scene7 {
+    background-image: url(IMAGES/pill-final.png);
+    width: 580px;
+    height: 410px;
+    position: absolute;
+    display: none;
+    transform: translate(200px, 200px)scale(2);
+}
+
+#scene7.pill {
+    animation: pill 3s steps(7) forwards;
+    animation-delay: 4s;
+}
+
+
+@keyframes pill {
+    100% {
+        background-position: -4060px 0px;
+    }
+}
+
+#frame8 {
+    display: none;
+}
+
+.typewriter {
+    overflow: hidden;
+    border-right: .15em solid chartreuse;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: typing 10s steps(100, end),
+    blink-caret .75s step-end infinite;
+    color: chartreuse;
+    font-family: "Courier New", serif;
+}
+
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent
+    }
+    50% {
+        border-color: chartreuse;
+    }
+}
